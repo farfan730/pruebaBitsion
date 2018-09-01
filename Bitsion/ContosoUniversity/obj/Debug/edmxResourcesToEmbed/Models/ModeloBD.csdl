@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iRecaudo_COEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Compania">
+    <Key>
+      <PropertyRef Name="IdCompania" />
+    </Key>
+    <Property Name="IdCompania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RazonSocial" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Nit" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ResponseUrl" Type="String" MaxLength="60" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Activo" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LogueoAutomatico" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Documentoes" Relationship="Self.FK_Documento_To_Compania" FromRole="Compania" ToRole="Documento" />
+  </EntityType>
+  <EntityType Name="Documento">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCompania" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="NumeroDocumento" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NumeroDocumentoOrigen" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CodigoBarra" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FechaDocumento" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FechaVencimiento" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Importe" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Impuesto" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Subtotal" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Rubro" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Moneda" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IdEstadoCobro" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Compania" Relationship="Self.FK_Documento_To_Compania" FromRole="Documento" ToRole="Compania" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Documento_To_Persona" FromRole="Documento" ToRole="Persona" />
+    <NavigationProperty Name="DocumentoDetalles" Relationship="Self.FK_DocumentoDetalle_To_Documento" FromRole="Documento" ToRole="DocumentoDetalle" />
+    <NavigationProperty Name="LOG_Post" Relationship="Self.FK_LOG_Post_To_Documento" FromRole="Documento" ToRole="LOG_Post" />
+    <NavigationProperty Name="LOG_Proceso" Relationship="Self.FK_LOG_Proceso_To_Documento" FromRole="Documento" ToRole="LOG_Proceso" />
+    <NavigationProperty Name="LOG_Sincronizacion" Relationship="Self.FK_LOG_Sincronizacion_To_Documento" FromRole="Documento" ToRole="LOG_Sincronizacion" />
+  </EntityType>
+  <EntityType Name="DocumentoDetalle">
+    <Key>
+      <PropertyRef Name="IdDocumentoDetalle" />
+    </Key>
+    <Property Name="IdDocumentoDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Cantidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Importe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Impuesto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Subtotal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Documento" Relationship="Self.FK_DocumentoDetalle_To_Documento" FromRole="DocumentoDetalle" ToRole="Documento" />
+  </EntityType>
+  <EntityType Name="LOG_Post">
+    <Key>
+      <PropertyRef Name="IdPost" />
+    </Key>
+    <Property Name="IdPost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="salida" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Resultado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mensaje" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StackTrace" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Documento" Relationship="Self.FK_LOG_Post_To_Documento" FromRole="LOG_Post" ToRole="Documento" />
+  </EntityType>
+  <EntityType Name="LOG_Proceso">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+    </Key>
+    <Property Name="IdProceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Ip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Entrada" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Resultado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mensaje" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Stacktrace" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Documento" Relationship="Self.FK_LOG_Proceso_To_Documento" FromRole="LOG_Proceso" ToRole="Documento" />
+  </EntityType>
+  <EntityType Name="LOG_Sincronizacion">
+    <Key>
+      <PropertyRef Name="IdSincronizacion" />
+    </Key>
+    <Property Name="IdSincronizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Resultado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mensaje" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StackTrace" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Documento" Relationship="Self.FK_LOG_Sincronizacion_To_Documento" FromRole="LOG_Sincronizacion" ToRole="Documento" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoIdentificacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NumeroIdentificacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="RazonSocial" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Nombres" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Documentoes" Relationship="Self.FK_Documento_To_Persona" FromRole="Persona" ToRole="Documento" />
+  </EntityType>
+  <Association Name="FK_Documento_To_Compania">
+    <End Role="Compania" Type="Self.Compania" Multiplicity="1" />
+    <End Role="Documento" Type="Self.Documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compania">
+        <PropertyRef Name="IdCompania" />
+      </Principal>
+      <Dependent Role="Documento">
+        <PropertyRef Name="IdCompania" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documento_To_Persona">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Documento" Type="Self.Documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Documento">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocumentoDetalle_To_Documento">
+    <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+    <End Role="DocumentoDetalle" Type="Self.DocumentoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="DocumentoDetalle">
+        <PropertyRef Name="IdDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_Post_To_Documento">
+    <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+    <End Role="LOG_Post" Type="Self.LOG_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="LOG_Post">
+        <PropertyRef Name="IdDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_Proceso_To_Documento">
+    <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+    <End Role="LOG_Proceso" Type="Self.LOG_Proceso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="LOG_Proceso">
+        <PropertyRef Name="IdDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_Sincronizacion_To_Documento">
+    <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+    <End Role="LOG_Sincronizacion" Type="Self.LOG_Sincronizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="LOG_Sincronizacion">
+        <PropertyRef Name="IdDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="iRecaudo_COEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Companias" EntityType="Self.Compania" />
+    <EntitySet Name="Documentoes" EntityType="Self.Documento" />
+    <EntitySet Name="DocumentoDetalles" EntityType="Self.DocumentoDetalle" />
+    <EntitySet Name="LOG_Post" EntityType="Self.LOG_Post" />
+    <EntitySet Name="LOG_Proceso" EntityType="Self.LOG_Proceso" />
+    <EntitySet Name="LOG_Sincronizacion" EntityType="Self.LOG_Sincronizacion" />
+    <EntitySet Name="Personas" EntityType="Self.Persona" />
+    <AssociationSet Name="FK_Documento_To_Compania" Association="Self.FK_Documento_To_Compania">
+      <End Role="Compania" EntitySet="Companias" />
+      <End Role="Documento" EntitySet="Documentoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documento_To_Persona" Association="Self.FK_Documento_To_Persona">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Documento" EntitySet="Documentoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocumentoDetalle_To_Documento" Association="Self.FK_DocumentoDetalle_To_Documento">
+      <End Role="Documento" EntitySet="Documentoes" />
+      <End Role="DocumentoDetalle" EntitySet="DocumentoDetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_Post_To_Documento" Association="Self.FK_LOG_Post_To_Documento">
+      <End Role="Documento" EntitySet="Documentoes" />
+      <End Role="LOG_Post" EntitySet="LOG_Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_Proceso_To_Documento" Association="Self.FK_LOG_Proceso_To_Documento">
+      <End Role="Documento" EntitySet="Documentoes" />
+      <End Role="LOG_Proceso" EntitySet="LOG_Proceso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_Sincronizacion_To_Documento" Association="Self.FK_LOG_Sincronizacion_To_Documento">
+      <End Role="Documento" EntitySet="Documentoes" />
+      <End Role="LOG_Sincronizacion" EntitySet="LOG_Sincronizacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

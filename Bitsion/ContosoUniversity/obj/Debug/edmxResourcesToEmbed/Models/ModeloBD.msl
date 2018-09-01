@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iRecaudo_COEModelStoreContainer" CdmEntityContainer="iRecaudo_COEEntities">
+    <EntitySetMapping Name="Companias">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.Compania">
+        <MappingFragment StoreEntitySet="Compania">
+          <ScalarProperty Name="IdCompania" ColumnName="IdCompania" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="ResponseUrl" ColumnName="ResponseUrl" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="LogueoAutomatico" ColumnName="LogueoAutomatico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documentoes">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.Documento">
+        <MappingFragment StoreEntitySet="Documento">
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="IdCompania" ColumnName="IdCompania" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="NumeroDocumentoOrigen" ColumnName="NumeroDocumentoOrigen" />
+          <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
+          <ScalarProperty Name="FechaDocumento" ColumnName="FechaDocumento" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Rubro" ColumnName="Rubro" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="IdEstadoCobro" ColumnName="IdEstadoCobro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentoDetalles">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.DocumentoDetalle">
+        <MappingFragment StoreEntitySet="DocumentoDetalle">
+          <ScalarProperty Name="IdDocumentoDetalle" ColumnName="IdDocumentoDetalle" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_Post">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.LOG_Post">
+        <MappingFragment StoreEntitySet="LOG_Post">
+          <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="salida" ColumnName="salida" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_Proceso">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.LOG_Proceso">
+        <MappingFragment StoreEntitySet="LOG_Proceso">
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="Entrada" ColumnName="Entrada" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="Stacktrace" ColumnName="Stacktrace" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_Sincronizacion">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.LOG_Sincronizacion">
+        <MappingFragment StoreEntitySet="LOG_Sincronizacion">
+          <ScalarProperty Name="IdSincronizacion" ColumnName="IdSincronizacion" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personas">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

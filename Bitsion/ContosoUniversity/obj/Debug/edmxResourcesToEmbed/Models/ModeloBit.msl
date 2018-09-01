@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iRecaudo_COEModelStoreContainer" CdmEntityContainer="iRecaudo_COEEntities">
+    <EntitySetMapping Name="Companias">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.Compania">
+        <MappingFragment StoreEntitySet="Compania">
+          <ScalarProperty Name="IdConpania" ColumnName="IdConpania" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="ResponseUrl" ColumnName="ResponseUrl" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="LogueoAutomatico" ColumnName="LogueoAutomatico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documentoes">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.Documento">
+        <MappingFragment StoreEntitySet="Documento">
+          <ScalarProperty Name="Idocumento" ColumnName="Idocumento" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="NumeroDocumentoOrigen" ColumnName="NumeroDocumentoOrigen" />
+          <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+          <ScalarProperty Name="FechaDocumento" ColumnName="FechaDocumento" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Rubro" ColumnName="Rubro" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="IdEstadoCobro" ColumnName="IdEstadoCobro" />
+          <ScalarProperty Name="IdCompania" ColumnName="IdCompania" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentoDetalles">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.DocumentoDetalle">
+        <MappingFragment StoreEntitySet="DocumentoDetalle">
+          <ScalarProperty Name="IdDocumentoDetalle" ColumnName="IdDocumentoDetalle" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Importe" ColumnName="Importe" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_Posts">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.LOG_Posts">
+        <MappingFragment StoreEntitySet="LOG_Posts">
+          <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Salida" ColumnName="Salida" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_Proceso">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.LOG_Proceso">
+        <MappingFragment StoreEntitySet="LOG_Proceso">
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="Entrada" ColumnName="Entrada" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_Sincronizacion">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.LOG_Sincronizacion">
+        <MappingFragment StoreEntitySet="LOG_Sincronizacion">
+          <ScalarProperty Name="IdSincronizacion" ColumnName="IdSincronizacion" />
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personas">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Tipodeidentificacion" ColumnName="Tipodeidentificacion" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoEstadoes">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel.TipoEstado">
+        <MappingFragment StoreEntitySet="TipoEstado">
+          <ScalarProperty Name="IdTipoEstado" ColumnName="IdTipoEstado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+          <ScalarProperty Name="NombreGrupo" ColumnName="NombreGrupo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

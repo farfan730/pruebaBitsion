@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iRecaudo_COEModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="documento">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="apellido" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="edadd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="documento_detalle" Relationship="Self.FK_documento_detalle_To_Documento" FromRole="documento" ToRole="documento_detalle" />
+  </EntityType>
+  <EntityType Name="documento_detalle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="detalleNombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="detalleApellido" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="idDocumento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="documento" Relationship="Self.FK_documento_detalle_To_Documento" FromRole="documento_detalle" ToRole="documento" />
+  </EntityType>
+  <Association Name="FK_documento_detalle_To_Documento">
+    <End Role="documento" Type="Self.documento" Multiplicity="1" />
+    <End Role="documento_detalle" Type="Self.documento_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documento">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="documento_detalle">
+        <PropertyRef Name="idDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="iRecaudo_COEEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="documentoes" EntityType="Self.documento" />
+    <EntitySet Name="documento_detalle" EntityType="Self.documento_detalle" />
+    <AssociationSet Name="FK_documento_detalle_To_Documento" Association="Self.FK_documento_detalle_To_Documento">
+      <End Role="documento" EntitySet="documentoes" />
+      <End Role="documento_detalle" EntitySet="documento_detalle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

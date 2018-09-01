@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="03210223526846ea97718282acdd9be3" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="iRecaudo_COEModel.Compania" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iRecaudo_COEModel.Documento" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iRecaudo_COEModel.DocumentoDetalle" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iRecaudo_COEModel.LOG_Post" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iRecaudo_COEModel.LOG_Proceso" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="iRecaudo_COEModel.LOG_Sincronizacion" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iRecaudo_COEModel.Persona" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="iRecaudo_COEModel.FK_Documento_To_Compania" ManuallyRouted="false" />
+        <AssociationConnector Association="iRecaudo_COEModel.FK_Documento_To_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="iRecaudo_COEModel.FK_DocumentoDetalle_To_Documento" ManuallyRouted="false" />
+        <AssociationConnector Association="iRecaudo_COEModel.FK_LOG_Post_To_Documento" ManuallyRouted="false" />
+        <AssociationConnector Association="iRecaudo_COEModel.FK_LOG_Proceso_To_Documento" ManuallyRouted="false" />
+        <AssociationConnector Association="iRecaudo_COEModel.FK_LOG_Sincronizacion_To_Documento" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

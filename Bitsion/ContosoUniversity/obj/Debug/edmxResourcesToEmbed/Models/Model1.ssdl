@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iRecaudo_COEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Documento">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="int" Nullable="false" />
+    <Property Name="IdCompania" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="NumeroDocumento" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumeroDocumentoOrigen" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="CodigoBarra" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="FechaDocumento" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="FechaVencimiento" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Importe" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Impuesto" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Subtotal" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Rubro" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Moneda" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="IdEstadoCobro" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocumentoDetalle">
+    <Key>
+      <PropertyRef Name="IdDocumentoDetalle" />
+    </Key>
+    <Property Name="IdDocumentoDetalle" Type="int" Nullable="false" />
+    <Property Name="IdDocumento" Type="int" Nullable="false" />
+    <Property Name="Codigo" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Cantidad" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Importe" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Impuesto" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Subtotal" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOG_Sincronizacion">
+    <Key>
+      <PropertyRef Name="IdSincronizacion" />
+    </Key>
+    <Property Name="IdSincronizacion" Type="int" Nullable="false" />
+    <Property Name="IdDocumento" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Resultado" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Mensaje" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="StackTrace" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DocumentoDetalle_To_Documento">
+    <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+    <End Role="DocumentoDetalle" Type="Self.DocumentoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="DocumentoDetalle">
+        <PropertyRef Name="IdDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="iRecaudo_COEModelStoreContainer">
+    <EntitySet Name="Documento" EntityType="Self.Documento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentoDetalle" EntityType="Self.DocumentoDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOG_Sincronizacion" EntityType="Self.LOG_Sincronizacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DocumentoDetalle_To_Documento" Association="Self.FK_DocumentoDetalle_To_Documento">
+      <End Role="Documento" EntitySet="Documento" />
+      <End Role="DocumentoDetalle" EntitySet="DocumentoDetalle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

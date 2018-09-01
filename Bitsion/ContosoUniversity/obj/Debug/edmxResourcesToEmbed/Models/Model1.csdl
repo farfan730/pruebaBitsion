@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iRecaudo_COEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Documento">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="IdCompania" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="NumeroDocumento" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NumeroDocumentoOrigen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CodigoBarra" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FechaDocumento" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FechaVencimiento" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Importe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Impuesto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Subtotal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Rubro" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Moneda" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IdEstadoCobro" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DocumentoDetalles" Relationship="Self.FK_DocumentoDetalle_To_Documento" FromRole="Documento" ToRole="DocumentoDetalle" />
+  </EntityType>
+  <EntityType Name="DocumentoDetalle">
+    <Key>
+      <PropertyRef Name="IdDocumentoDetalle" />
+    </Key>
+    <Property Name="IdDocumentoDetalle" Type="Int32" Nullable="false" />
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Cantidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Importe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Impuesto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Subtotal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Documento" Relationship="Self.FK_DocumentoDetalle_To_Documento" FromRole="DocumentoDetalle" ToRole="Documento" />
+  </EntityType>
+  <EntityType Name="LOG_Sincronizacion">
+    <Key>
+      <PropertyRef Name="IdSincronizacion" />
+    </Key>
+    <Property Name="IdSincronizacion" Type="Int32" Nullable="false" />
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Resultado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mensaje" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StackTrace" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DocumentoDetalle_To_Documento">
+    <End Role="Documento" Type="Self.Documento" Multiplicity="1" />
+    <End Role="DocumentoDetalle" Type="Self.DocumentoDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="IdDocumento" />
+      </Principal>
+      <Dependent Role="DocumentoDetalle">
+        <PropertyRef Name="IdDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="iRecaudo_COEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Documentoes" EntityType="Self.Documento" />
+    <EntitySet Name="DocumentoDetalles" EntityType="Self.DocumentoDetalle" />
+    <EntitySet Name="LOG_Sincronizacion" EntityType="Self.LOG_Sincronizacion" />
+    <AssociationSet Name="FK_DocumentoDetalle_To_Documento" Association="Self.FK_DocumentoDetalle_To_Documento">
+      <End Role="Documento" EntitySet="Documentoes" />
+      <End Role="DocumentoDetalle" EntitySet="DocumentoDetalles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

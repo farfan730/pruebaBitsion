@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iRecaudo_COEModel1StoreContainer" CdmEntityContainer="iRecaudo_COEEntities2">
+    <EntitySetMapping Name="documentoes">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel1.documento">
+        <MappingFragment StoreEntitySet="documento">
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="edadd" ColumnName="edadd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documento_detalle">
+      <EntityTypeMapping TypeName="iRecaudo_COEModel1.documento_detalle">
+        <MappingFragment StoreEntitySet="documento_detalle">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="detalleNombre" ColumnName="detalleNombre" />
+          <ScalarProperty Name="detalleApellido" ColumnName="detalleApellido" />
+          <ScalarProperty Name="idDocumento" ColumnName="idDocumento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
